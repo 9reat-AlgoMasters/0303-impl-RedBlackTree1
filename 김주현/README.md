@@ -122,7 +122,7 @@
         |Before|After1|After2|
         |---|---|---|
         |![case1-1-1](https://user-images.githubusercontent.com/95271588/234269082-9522eb48-3928-4d7c-bcee-30c54a29804c.png)|![case1-1-2](https://user-images.githubusercontent.com/95271588/234269092-00eae841-6be3-4020-8381-4a3954151504.png)|![case1-1-3](https://user-images.githubusercontent.com/95271588/234269098-a44f0426-2c50-4178-8216-8aa90dac9970.png)|
-        ||1 삭제|삭제한 자리의 nil 노드를 doubly black으로 바꾼다.|
+        ||1 삭제|3의 black을 자식들로 보내준다. (이때 왼쪽 오른쪽 자식 모두에게 보내야 RB tree 속성을 만족한다.)|
 
         |After3|After4|After5|
         |---|---|---|
@@ -131,10 +131,12 @@
 
 
 ### Case2 - Case4의 꺾인 형태
-
+- 한번 회전으로 Case1의 형태를 만들어서 처리한다.
 
 ### Case3 - 형제 black & 형제의 자식 모두 black
-
+- 자신과 형제의 black을 부모로 올려서 부모에서 doubly black을 처리하도록 위임한다.
+- 만약 doubly black이 root 까지 올라간다면 root에서는 그냥 doubly black을 없애주어도 된다.
 
 ### Case4 - 형제 red
 - 회전시켜서 형제를 black으로 만들자
+- Red의 자식으로 반드시 black이 있음이 보장되기 때문에 한번 회전으로 doubly black의 형제를 black으로 바꿀 수 있다.
